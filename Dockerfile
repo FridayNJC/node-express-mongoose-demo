@@ -5,9 +5,9 @@ RUN apk update
 RUN apk upgrade
 RUN apk add bash
 
-WORKDIR /app
+WORKDIR /usr/src/app
 # https://stackoverflow.com/a/32785014/232619
-COPY . /app
+COPY . /usr/src/app
 RUN npm install
 COPY wait-for-it.sh /usr/local
 RUN chmod +x /usr/local/wait-for-it.sh
