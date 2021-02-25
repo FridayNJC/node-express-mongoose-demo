@@ -13,11 +13,6 @@ pipeline {
                 sh 'docker build -t nileshchudasama/node:v1 .'
             }
         }
-        stage('Deploy image'){
-            steps{
-                sh 'docker push nileshchudasama/node:v1'
-            }
-        }
         stage('Test'){
             steps{
                 sh 'npm i'
@@ -28,6 +23,11 @@ pipeline {
                 sh 'docker-compose exec node npm install --save-dev npm-check-updates@11.1.9'
                 sh 'docker-compose exec node npm audit fix'
                 sh 'docker-compose exec -e MONGODB_URL=mongodb://mongo:27017/noobjs_test node npm test'
+            }
+        }
+        stage('Deploy image'){
+            steps{
+                sh 'docker push nileshchudasama/node:v1'
             }
         }
         // stage('Deploy'){
