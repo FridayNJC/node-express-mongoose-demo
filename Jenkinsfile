@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Building image'){
             steps{
-                sh 'docker build docker/node/ -t nileshchudasama/node:v1'
+                sh 'docker build -t nileshchudasama/node:v1'
             }
         }
         stage('Deploy image'){
