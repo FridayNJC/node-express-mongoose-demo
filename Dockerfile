@@ -9,8 +9,6 @@ WORKDIR /usr/src/app
 # https://stackoverflow.com/a/32785014/232619
 COPY . /usr/src/app
 RUN npm install
-RUN npm install bcrypt
-RUN npm audit fix
 COPY wait-for-it.sh /usr/local
 RUN chmod +x /usr/local/wait-for-it.sh
 

@@ -24,6 +24,9 @@ pipeline {
                 sh 'cp .env.example .env'
                 sh 'docker-compose up -d'
                 sh 'docker-compose exec node npm i'
+                sh 'docker-compose exec node npm install bcrypt'
+                sh 'docker-compose exec node npm install --save-dev npm-check-updates@11.1.9'
+                sh 'docker-compose exec node npm audit fix'
                 sh 'docker-compose exec -e MONGODB_URL=mongodb://mongo:27017/noobjs_test node npm test'
             }
         }
